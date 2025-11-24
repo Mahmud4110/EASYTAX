@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EasyTax Pricing – Free for Most Hustlers | NTA 2025 Ready</title>
+  <meta name="description" content="Freemium tax filing: ₦0 if under ₦800K/year. Pro at ₦2,000/month. File NTA returns in 2 mins – no fines, max savings."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-pricing { background: linear-gradient(135deg, #009E60 0%, #001a0d 100%); }
+    .tier-card { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .tier-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 50px -12px rgba(0, 158, 96, 0.25); }
+    .glow-free { box-shadow: 0 0 40px rgba(255, 215, 0, 0.5); }
+    .quiz-progress { background: linear-gradient(to right, #009E60 var(--progress), #e5e7eb var(--progress)); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 overflow-x-hidden">
+
+  <!-- HERO + ELIGIBILITY QUIZ (TurboTax-Style Flow) -->
+  <section class="gradient-pricing text-white min-h-screen flex items-center relative">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+    </div>
+    <div class="container mx-auto px-6 lg:px-20 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-black leading-tight">
+          Pricing That Fits Your Hustle
+        </h1>
+        <p class="text-xl md:text-2xl mt-6 opacity-90">
+          Like TurboTax, but for Naija: Free for simple returns. Pro for everything else. 100% NTA 2025 compliant.
+        </p>
+        <div class="mt-12 bg-white/10 backdrop-blur-md rounded-3xl p-8">
+          <p class="text-lg">Quick Quiz: Which Tier for You? (Takes 30s)</p>
+          <div class="mt-6 space-y-4">
+            <div class="flex items-center space-x-4">
+              <input type="radio" id="simple" name="tier" class="w-5 h-5 text-green-600">
+              <label for="simple" class="text-lg">Simple: Under ₦800K/year (W-2 style income, no investments)</label>
+            </div>
+            <div class="flex items-center space-x-4">
+              <input type="radio" id="pro" name="tier" class="w-5 h-5 text-green-600">
+              <label for="pro" class="text-lg">Pro: Freelance, POS, TikTok – with FX/crypto/shares</label>
+            </div>
+            <button onclick="showTier()" class="bg-yellow-400 text-gray-900 font-bold py-4 px-8 rounded-xl mt-4 hover:bg-yellow-300 transition">
+              Find My Plan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING TIERS (TurboTax Card Layout – Animated Hover) -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-6 lg:px-20">
+      <h2 class="text-center text-4xl md:text-6xl font-black mb-4">Our Plans</h2>
+      <p class="text-center text-xl text-gray-600 mb-16">70% of hustlers qualify for Free – just like TurboTax's 37% simple filers.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        
+        <!-- Free Tier Card (Highlighted, Glow Effect) -->
+        <div class="tier-card bg-gradient-to-b from-white to-gray-50 rounded-3xl p-8 lg:p-12 border-2 border-yellow-300 glow-free relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-yellow-400 text-gray-900 px-4 py-2 rounded-bl-xl font-bold">Most Popular</div>
+          <div class="text-center">
+            <h3 class="text-3xl font-black mt-4">Free Forever</h3>
+            <p class="text-6xl font-black text-green-600 mt-2">₦0</p>
+            <p class="text-lg text-gray-600 mt-2">Under ₦800K/year income</p>
+            <ul class="mt-8 space-y-4 text-left text-gray-700">
+              <li class="flex items-center"><i class="fas fa-check text-green-600 mr-3"></i> NTA Exemption Checker</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-600 mr-3"></i> Basic PIT Filing (Form 1040-style)</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-600 mr-3"></i> Tax Education Modules</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-600 mr-3"></i> Community Support Forum</li>
+              <li class="flex items-center"><i class="fas fa-times text-red-600 mr-3"></i> No Crypto/FX Tracking</li>
+            </ul>
+            <button class="mt-10 w-full bg-green-600 text-white font-bold py-5 rounded-xl text-xl hover:bg-green-700 transition">Start Free – No Card Needed</button>
+          </div>
+        </div>
+
+        <!-- Pro Tier Card -->
+        <div class="tier-card bg-gradient-to-b from-gray-50 to-white rounded-3xl p-8 lg:p-12 border-2 border-gray-200">
+          <div class="text-center">
+            <h3 class="text-3xl font-black mt-4">Pro</h3>
+            <p class="text-6xl font-black text-green-600 mt-2">₦2,000<span class="text-3xl">/month</span></p>
+            <p class="text-lg text-gray-600 mt-2">Everything + Expert Tools</p>
+            <ul class="mt-8 space-y-4 text-left text-gray-700">
+              <li class="flex items-center"><i class="fas fa-check text-green-600 mr-3"></i> Unlimited Filings & TCC Turbo</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-600 mr-3"></i> BVN Multi-Bank Reconciliation</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-600 mr-3"></i> Crypto/FX/Share Gains Calc</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-600 mr-3"></i> Audit Shield Reports</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-600 mr-3"></i> Priority WhatsApp Support</li>
+            </ul>
+            <button class="mt-10 w-full bg-yellow-400 text-gray-900 font-bold py-5 rounded-xl text-xl hover:bg-yellow-300 transition">Try Pro Free 30 Days</button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16 text-center">
+        <p class="text-xl text-gray-600">100% Accurate Calc Guarantee • Max Refund Promise • Free Audit Support</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE COMPARER (TurboTax-Style Table – Interactive Toggle) -->
+  <section class="py-24 bg-gray-50">
+    <div class="container mx-auto px-6 lg:px-20">
+      <h2 class="text-center text-4xl md:text-6xl font-black mb-8">Compare Features</h2>
+      <p class="text-center text-xl text-gray-600 mb-16">See why Pro unlocks the full NTA power – like TurboTax Live, but for your hustle.</p>
+      <div x-data="{ pro: false }" class="overflow-x-auto">
+        <table class="w-full bg-white rounded-3xl shadow-xl">
+          <thead class="bg-green-600 text-white">
+            <tr>
+              <th class="p-6 text-left font-bold">Features</th>
+              <th class="p-6 text-center font-bold">Free</th>
+              <th class="p-6 text-center font-bold">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" x-model="pro" class="sr-only peer">
+                  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                  <span class="ml-3 text-sm font-bold">Pro ₦2K/mo</span>
+                </label>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr><td class="p-6 font-medium">NTA Exemption Auto-Check</td><td class="p-6 text-center"><i class="fas fa-check text-green-600"></i></td><td class="p-6 text-center"><i class="fas fa-check text-green-600"></i></td></tr>
+            <tr><td class="p-6 font-medium">BVN Bank Reconciliation</td><td class="p-6 text-center"><i class="fas fa-times text-red-600"></i></td><td class="p-6 text-center"><i class="fas fa-check text-green-600"></i></td></tr>
+            <tr><td class="p-6 font-medium">Crypto/FX Tax Calc</td><td class="p-6 text-center"><i class="fas fa-times text-red-600"></i></td><td class="p-6 text-center"><i class="fas fa-check text-green-600"></i></td></tr>
+            <tr><td class="p-6 font-medium">TCC in <24hrs</td><td class="p-6 text-center"><i class="fas fa-clock text-yellow-600"></i></td><td class="p-6 text-center"><i class="fas fa-bolt text-green-600"></i></td></tr>
+            <tr><td class="p-6 font-medium">Audit Support</td><td class="p-6 text-center"><i class="fas fa-times text-red-600"></i></td><td class="p-6 text-center"><i class="fas fa-shield-alt text-green-600"></i></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMBEDDED DEMO VIDEO (5-Min Engagement Hook) -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-6 lg:px-20 text-center">
+      <h2 class="text-4xl md:text-6xl font-black">Watch It Work (2-Min Demo)</h2>
+      <p class="text-xl text-gray-600 mt-4">Like TurboTax's file preview – see your taxes done right.</p>
+      <div class="mt-12 aspect-video max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="EasyTax Demo" frameborder="0" allowfullscreen></iframe> <!-- Placeholder: Replace with real demo -->
+      </div>
+      <p class="mt-8 text-lg text-gray-500">Pro Tip: Pause at 1:20 for the exemption magic.</p>
+    </div>
+  </section>
+
+  <!-- GUARANTEES & SOCIAL PROOF (TurboTax Guarantees Section) -->
+  <section class="py-24 bg-gray-900 text-white">
+    <div class="container mx-auto px-6 lg:px-20">
+      <h2 class="text-center text-4xl md:text-6xl font-black mb-12">Our Guarantees</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-8">
+          <i class="fas fa-calculator text-6xl text-yellow-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">100% Accurate</h3>
+          <p class="mt-4 text-gray-300">Calc Guarantee – or we refund 100%</p>
+        </div>
+        <div class="text-center p-8">
+          <i class="fas fa-trophy text-6xl text-yellow-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">Max Refund</h3>
+          <p class="mt-4 text-gray-300">Promise – Beat any agent's savings</p>
+        </div>
+        <div class="text-center p-8">
+          <i class="fas fa-handshake text-6xl text-yellow-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">Free Audit</h3>
+          <p class="mt-4 text-gray-300">Support – We fight FIRS for you</p>
+        </div>
+      </div>
+      <div class="mt-16 text-center">
+        <p class="text-2xl font-bold">4.8/5 from 12,345 Nigerian Hustlers</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA (TurboTax "Start for Free" Flow) -->
+  <section class="py-32 bg-green-600 text-center">
+    <div class="container mx-auto px-6 lg:px-20">
+      <h2 class="text-5xl md:text-7xl font-black">Ready to File?</h2>
+      <p class="text-2xl mt-4 opacity-90">Start free – upgrade anytime. No lock-in.</p>
+      <div class="max-w-md mx-auto mt-12">
+        <input type="text" placeholder="080-XXX-XXXX" class="w-full px-8 py-6 rounded-xl text-gray-900 text-xl">
+        <button class="w-full mt-6 bg-yellow-400 text-gray-900 font-black py-6 rounded-xl text-2xl hover:bg-yellow-300 transition">
+          Start Free Filing →
+        </button>
+      </div>
+      <p class="mt-8 text-lg opacity-90">Launching Q1 2026 • CBN Sandbox Approved</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-12 text-center">
+    <p class="text-2xl font-bold">EasyTax.ng</p>
+    <p class="mt-4 text-gray-400">© 2025 EasyTax Tech Ltd. NDPC Compliant • Built for NTA 2025</p>
+  </footer>
+
+  <script>
+    function showTier() {
+      // Simple JS to reveal tiers based on quiz (expand for full logic)
+      alert('Based on your answers: You qualify for Free! Scroll down to start.');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EasyTax Revolution – Join 50,000 Nigerians Ending Tax Palava</title>
+  <meta name="description" content="Be part of the movement ending tax stress forever. Refer friends, climb the leaderboard, get ₦5,000 credit."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-revolution { background: linear-gradient(135deg, #009E60 0%, #000000 70%); }
+    .leaderboard-glow { box-shadow: 0 0 60px rgba(0, 255, 157, 0.6); }
+    .rank-1 { background: linear-gradient(45deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden" x-data="revolution()">
+
+  <!-- HERO VIDEO LOOP -->
+  <section class="gradient-revolution min-h-screen flex items-center relative overflow-hidden">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-pan-right-to-left-over-lagos-nigeria-39891-large.mp4" type="video/mp4">
+    </video>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <h1 class="text-5xl md:text-8xl font-black leading-tight">
+        The <span class="text-yellow-400">EasyTax</span><br>Revolution is Here
+      </h1>
+      <p class="text-3xl md:text-5xl mt-8 font-bold text-yellow-300">
+        <span x-text="totalJoined.toLocaleString()"></span>+ Nigerians have joined
+      </p>
+      <p class="text-2xl mt-6 opacity-90">Be part of the 50,000 ending tax palava forever</p>
+      
+      <div class="mt-12 max-w-xl mx-auto">
+        <input x-model="phone" @keyup.enter="joinRevolution()" placeholder="080-XXX-XXXX" class="w-full px-8 py-8 rounded-xl text-black text-2xl font-bold text-center"/>
+        <button @click="joinRevolution()" class="mt-6 w-full bg-yellow-400 text-black font-black py-8 rounded-xl text-3xl hover:scale-105 transition shadow-2xl">
+          Lock My Spot Now →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE LEADERBOARD -->
+  <section class="py-24 bg-gray-900">
+    <div class="container mx-auto px-6 lg:px-20">
+      <h2 class="text-center text-5xl md:text-7xl font-black mb-16">Live Leaderboard</h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Top 3 -->
+        <template x-for="(person, index) in leaderboard.slice(0,3)" :key="index">
+          <div :class="index === 0 ? 'leaderboard-glow' : ''" class="bg-gradient-to-b from-gray-800 to-black rounded-3xl p-8 text-center transform scale-105">
+            <p class="text-6xl font-black rank-1" x-text="'#' + (index + 1)"></p>
+            <p class="text-3xl font-bold mt-4" x-text="person.name"></p>
+            <p class="text-xl text-yellow-400 mt-2" x-text="person.referrals + ' referrals'"></p>
+            <p class="text-sm mt-4 opacity-70" x-text="person.location"></p>
+          </div>
+        </template>
+      </div>
+
+      <!-- Rest of Top 100 -->
+      <div class="mt-16 bg-gray-800/50 backdrop-blur rounded-3xl p-8 max-w-4xl mx-auto leaderboard-glow">
+        <template x-for="(person, index) in leaderboard.slice(3, 15)" :key="index">
+          <div class="flex justify-between items-center py-4 border-b border-gray-700">
+            <span class="text-2xl font-bold" x-text="(index + 4) + '.'"></span>
+            <span class="flex-1 text-left ml-8" x-text="person.name"></span>
+            <span class="text-yellow-400 font-bold" x-text="person.referrals + ' refs'"></span>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERRAL FLYWHEEL -->
+  <section class="py-24 bg-black">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-5xl md:text-7xl font-black">Refer & Earn ₦5,000 Credit</h2>
+      <p class="text-2xl mt-8">Every 5 friends = ₦5,000 + VIP badge</p>
+      <div class="mt-12 flex flex-wrap justify-center gap-6">
+        <button class="bg-green-600 hover:bg-green-500 px-8 py-6 rounded-xl text-xl font-bold flex items-center">
+          <i class="fab fa-whatsapp text-3xl mr-4"></i> Share on WhatsApp
+        </button>
+        <button class="bg-pink-600 hover:bg-pink-500 px-8 py-6 rounded-xl text-xl font-bold flex items-center">
+          <i class="fab fa-instagram text-3xl mr-4"></i> Instagram Story
+        </button>
+        <button class="bg-blue-600 hover:bg-blue-500 px-8 py-6 rounded-xl text-xl font-bold flex items-center">
+          <i class="fab fa-tiktok text-3xl mr-4"></i> TikTok
+        </button>
+      </div>
+      <p class="mt-12 text-3xl font-black text-yellow-400">Your link: easytax.ng/r/<span x-text="userId"></span></p>
+    </div>
+  </section>
+
+  <!-- WALL OF LOVE -->
+  <section class="py-24 bg-gray-900">
+    <div class="container mx-auto px-6">
+      <h2 class="text-center text-5xl md:text-7xl font-black mb-16">The Revolution Speaks</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-black/50 rounded-3xl p-8 border border-green-600">
+          <p class="text-xl italic">"I saved ₦187,000 in one click!"</p>
+          <p class="mt-6 font-bold text-yellow-400">— Aisha, Yaba Tailor</p>
+        </div>
+        <div class="bg-black/50 rounded-3xl p-8 border border-green-600">
+          <p class="text-xl italic">"TCC in 11 mins instead of 4 days"</p>
+          <p class="mt-6 font-bold text-yellow-400">— Tunde, Alaba POS King</p>
+        </div>
+        <div class="bg-black/50 rounded-3xl p-8 border border-green-600">
+          <p class="text-xl italic">"Finally tax that speaks pidgin!"</p>
+          <p class="mt-6 font-bold text-yellow-400">— Chioma, UNILAG TikToker</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA WITH CONFETTI -->
+  <section class="py-32 bg-green-600 text-center">
+    <div class="container mx-auto px-6">
+      <h2 class="text-6xl md:text-9xl font-black">Your Spot is Waiting</h2>
+      <p class="text-3xl mt-8">Join the first 50,000</p>
+      <div class="max-w-md mx-auto mt-12">
+        <input x-model="phone" @keyup.enter="joinRevolution()" placeholder="Your phone number" class="w-full px-8 py-8 rounded-xl text-black text-2xl font-bold text-center"/>
+        <button @click="joinRevolution()" class="mt-6 w-full bg-yellow-400 text-black font-black py-8 rounded-xl text-4xl hover:scale-110 transition">
+          I’m In! Lock My Spot
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function revolution() {
+      return {
+        totalJoined: 48732,
+        phone: '',
+        userId: Math.random().toString(36).substr(2, 6).toUpperCase(),
+        leaderboard: [
+          { name: "Chioma E.", referrals: 187, location: "Lekki Phase 1" },
+          { name: "Tunde Alaba", referrals: 156, location: "Alaba Market" },
+          { name: "Aisha Fashion", referrals: 142, location: "Yaba" },
+          // ... more fake data
+        ].concat(Array(97).fill(null).map((_, i) => ({
+          name: `User${i + 4}`,
+          referrals: Math.floor(Math.random() * 120),
+          location: ["Lagos", "Abuja", "PH", "Kano", "Ibadan"][Math.floor(Math.random()*5)]
+        }))),
+
+        joinRevolution() {
+          if (this.phone.length < 10) return alert("Enter valid number o!");
+          confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 } });
+          this.totalJoined += Math.floor(Math.random() * 12) + 1;
+          alert(`Welcome to the revolution! You're #${this.totalJoined.toLocaleString()} 🔥\nShare your link: easytax.ng/r/${this.userId}`);
+        },
+
+        init() {
+          setInterval(() => {
+            this.totalJoined += Math.floor(Math.random() * 5);
+            this.leaderboard.sort((a,b) => b.referrals - a.referrals);
+          }, 8000);
+        }
+      }
+    }
+  </script>
+
+  <footer class="bg-black py-16 text-center">
+    <p class="text-3xl font-black">EasyTax.ng • Built in Lagos with fire</p>
+  </footer>
+</body>
+</html>
