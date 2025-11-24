@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EasyTax • Live Demo – See the Magic in 60 Seconds</title>
+  <meta name="description" content="Watch how EasyTax files your 2025 taxes in under 2 minutes – no agent, no stress."/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    
+    /* Nigerian Green Gradient */
+    .gradient-demo { background: linear-gradient(135deg, #008751 0%, #000000 100%); }
+    
+    .phone-mockup { 
+      background: #1a1a1a; 
+      border: 12px solid #2d2d2d;
+      border-radius: 50px; 
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    /* Screen Content Animation */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .glow-btn { 
+      background: linear-gradient(45deg, #008751, #2ecc71); 
+      box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+      transition: all 0.3s ease;
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 30px rgba(46, 204, 113, 0.6);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+
+  <section class="gradient-demo min-h-screen flex items-center relative py-20 lg:py-0">
+    <div class="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
+      
+      <div class="max-w-xl z-10">
+        <div class="inline-block bg-green-900/50 border border-green-500/30 rounded-full px-4 py-1 mb-6">
+          <span class="text-green-400 font-bold text-sm tracking-wide uppercase">🇳🇬 Built for the 2025 Finance Act</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight">
+          Tax Compliance.<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">Zero Stress.</span>
+        </h1>
+        <p class="text-xl md:text-2xl mt-8 text-gray-200 leading-relaxed">
+          No messy paperwork. No expensive agents. Connect your bank, click one button, and get your TCC instantly.
+        </p>
+        
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <button onclick="startDemo()" id="demoBtn" class="glow-btn text-white font-bold py-4 px-8 rounded-full text-lg flex items-center justify-center gap-3">
+            <i class="fas fa-play"></i> <span>Watch It Work</span>
+          </button>
+          <button class="border-2 border-gray-600 bg-gray-800/50 text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-white hover:text-gray-900 transition flex items-center justify-center gap-3">
+            <span>Join Waitlist</span> <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+        
+        <div class="mt-10 flex items-center gap-4 text-sm text-gray-400">
+          <div class="flex -space-x-2">
+            <img class="w-8 h-8 rounded-full border-2 border-gray-900" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+            <img class="w-8 h-8 rounded-full border-2 border-gray-900" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+            <img class="w-8 h-8 rounded-full border-2 border-gray-900" src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+          </div>
+          <p>Trusted by 50,000+ Nigerian SMEs</p>
+        </div>
+      </div>
+
+      <div class="flex justify-center lg:justify-end relative z-10">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-green-600 rounded-full blur-[100px] opacity-30"></div>
+
+        <div class="phone-mockup w-[320px] h-[650px] bg-black overflow-hidden relative shadow-2xl">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-xl z-20"></div>
+          
+          <div id="phoneScreen" class="w-full h-full bg-gray-100 text-gray-900 overflow-hidden relative">
+            
+            <div class="h-full flex flex-col items-center justify-center p-6 text-center bg-white">
+              <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6 animate-bounce">
+                <i class="fas fa-fingerprint text-4xl text-green-600"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800">Ready?</h3>
+              <p class="text-gray-500 mt-2">Tap "Watch It Work" on the left to see the magic happen.</p>
+            </div>
+
+          </div>
+          
+          <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-500 rounded-full z-20"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Helper function to create a delay
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+    async function startDemo() {
+      const screen = document.getElementById('phoneScreen');
+      const btn = document.getElementById('demoBtn');
+      
+      // Disable button during demo
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Running Demo...</span>';
+      btn.classList.add('opacity-75', 'cursor-not-allowed');
+
+      // STEP 1: Welcome / Splash
+      screen.innerHTML = `
+        <div class="h-full flex flex-col items-center justify-center bg-green-600 text-white fade-in p-6 text-center">
+          <i class="fas fa-bolt text-6xl mb-4 text-yellow-300"></i>
+          <h2 class="text-3xl font-bold">EasyTax</h2>
+          <p class="mt-2 opacity-90">Welcome back, Chioma!</p>
+          <div class="mt-8 flex items-center gap-2 text-sm">
+            <i class="fas fa-lock"></i> Secure Connection
+          </div>
+        </div>`;
+      await sleep(2000);
+
+      // STEP 2: Analyzing Bank Data
+      screen.innerHTML = `
+        <div class="h-full flex flex-col pt-12 px-6 bg-gray-50 fade-in">
+          <h3 class="text-xl font-bold mb-6">Link Bank Account</h3>
+          <div class="space-y-4">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-green-500 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">M</div>
+                <div>
+                  <p class="font-bold text-sm">Moniepoint</p>
+                  <p class="text-xs text-gray-500">Connected</p>
+                </div>
+              </div>
+              <i class="fas fa-check-circle text-green-500"></i>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm flex items-center justify-between opacity-50">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold">G</div>
+                <div>
+                  <p class="font-bold text-sm">GTBank</p>
+                  <p class="text-xs text-gray-500">Not Connected</p>
+                </div>
+              </div>
+              <i class="fas fa-plus text-gray-400"></i>
+            </div>
+          </div>
+          <div class="mt-auto mb-8">
+            <div class="flex items-center justify-center gap-2 text-green-600 mb-2">
+              <i class="fas fa-sync fa-spin"></i> <span class="text-sm font-semibold">Analyzing 12 months transactions...</span>
+            </div>
+          </div>
+        </div>`;
+      await sleep(3000);
+
+      // STEP 3: The Result (Exemption)
+      screen.innerHTML = `
+        <div class="h-full flex flex-col pt-12 px-6 bg-white fade-in text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-chart-pie text-2xl text-green-600"></i>
+          </div>
+          <p class="text-gray-500 text-sm uppercase tracking-wide">Total Turnover (2024)</p>
+          <h2 class="text-4xl font-black text-gray-900 mt-2">₦42.5M</h2>
+          
+          <div class="mt-6 bg-green-50 border border-green-200 rounded-xl p-4">
+            <p class="text-green-800 font-bold text-sm">✅ SMALL COMPANY EXEMPTION</p>
+            <p class="text-xs text-green-700 mt-1">Under ₦50M threshold (Finance Act 2025)</p>
+          </div>
+
+          <div class="mt-6 flex justify-between items-center border-t pt-4">
+            <span class="text-gray-600">Tax Due:</span>
+            <span class="text-2xl font-bold text-green-600">₦0.00</span>
+          </div>
+
+          <button class="mt-auto mb-8 bg-black text-white py-4 rounded-xl font-bold shadow-lg">
+            File "Nil" Return Now
+          </button>
+        </div>`;
+      await sleep(3500);
+
+      // STEP 4: Processing
+      screen.innerHTML = `
+        <div class="h-full flex flex-col items-center justify-center bg-white fade-in">
+          <div class="relative">
+            <div class="w-24 h-24 border-4 border-gray-200 border-t-green-500 rounded-full animate-spin"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fas fa-server text-gray-400"></i>
+            </div>
+          </div>
+          <p class="mt-6 font-bold text-lg">Connecting to FIRS...</p>
+          <p class="text-sm text-gray-400 mt-1">Generating TCC Request</p>
+        </div>`;
+      await sleep(2500);
+
+      // STEP 5: Success
+      screen.innerHTML = `
+        <div class="h-full flex flex-col items-center justify-center bg-green-600 text-white fade-in p-8 text-center">
+          <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mb-6 shadow-xl">
+            <i class="fas fa-check text-5xl text-green-600"></i>
+          </div>
+          <h2 class="text-3xl font-black">Success!</h2>
+          <p class="mt-4 text-lg opacity-90">Your Tax Clearance Certificate has been emailed to you.</p>
+          
+          <div class="mt-8 bg-green-700 rounded-lg p-4 w-full flex items-center gap-3">
+            <i class="fas fa-file-pdf text-2xl"></i>
+            <div class="text-left">
+              <p class="font-bold text-sm">TCC_2025_Chioma.pdf</p>
+              <p class="text-xs opacity-75">Signed by FIRS</p>
+            </div>
+          </div>
+
+          <button onclick="resetDemo()" class="mt-8 text-sm font-bold underline opacity-80 hover:opacity-100">
+            Start Over
+          </button>
+        </div>`;
+        
+      // Reset Button State
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-redo"></i> <span>Replay Demo</span>';
+      btn.classList.remove('opacity-75', 'cursor-not-allowed');
+    }
+
+    // Function to reset the screen to idle manually if needed
+    function resetDemo() {
+      const screen = document.getElementById('phoneScreen');
+      screen.innerHTML = `
+        <div class="h-full flex flex-col items-center justify-center p-6 text-center bg-white fade-in">
+          <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
+            <i class="fas fa-fingerprint text-4xl text-green-600"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800">Ready?</h3>
+          <p class="text-gray-500 mt-2">Tap "Replay Demo" to watch again.</p>
+        </div>`;
+    }
+  </script>
+
+  <section class="py-20 bg-gray-50 text-gray-900">
+    <div class="container mx-auto px-6 lg:px-20 text-center">
+      <h2 class="text-3xl md:text-5xl font-black mb-16">Real Hustlers. Real Results.</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition border-t-4 border-green-500">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-14 h-14 rounded-full object-cover" alt="Aisha"/>
+            <div class="text-left">
+              <p class="font-bold text-lg">Aisha</p>
+              <p class="text-sm text-gray-500">Tailor @ Yaba</p>
+            </div>
+          </div>
+          <p class="text-left text-lg italic text-gray-700">“I used to pay agents ₦50k just to file 'nil' returns. EasyTax did it for free in 2 mins. My head wan blow!”</p>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition border-t-4 border-yellow-400">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-14 h-14 rounded-full object-cover" alt="Tunde"/>
+            <div class="text-left">
+              <p class="font-bold text-lg">Tunde</p>
+              <p class="text-sm text-gray-500">Logistics CEO @ Ikeja</p>
+            </div>
+          </div>
+          <p class="text-left text-lg italic text-gray-700">“The FIRS portal is always crashing. EasyTax just connects to my Moniepoint and handles the rest. 10/10.”</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition border-t-4 border-green-500">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-14 h-14 rounded-full object-cover" alt="Chioma"/>
+            <div class="text-left">
+              <p class="font-bold text-lg">Chioma</p>
+              <p class="text-sm text-gray-500">Vendor @ UNILAG</p>
+            </div>
+          </div>
+          <p class="text-left text-lg italic text-gray-700">“I needed a TCC for my visa application urgently. This app generated it while I was in class. Mad stuff.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-green-600 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <h2 class="text-4xl md:text-6xl font-black text-white mb-6">Don't let tax stress you.</h2>
+      <p class="text-xl text-green-100 mb-10">Join the waitlist for Early Access.</p>
+      
+      <form class="max-w-md mx-auto flex flex-col md:flex-row gap-4">
+        <input type="email" placeholder="Enter your email address" class="flex-1 px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition">
+        <button class="bg-yellow-400 text-gray-900 font-black px-8 py-4 rounded-full hover:bg-yellow-300 hover:scale-105 transition shadow-lg">
+          Get Access
+        </button>
+      </form>
+      <p class="mt-8 text-sm text-green-200">NDPC Compliant • CBN Sandbox Approved</p>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 border-t border-gray-800 py-12 text-center">
+    <p class="text-2xl font-bold text-white mb-4">EasyTax<span class="text-green-500">.ng</span></p>
+    <p class="text-gray-500 text-sm">© 2025 EasyTax Technology Limited. Built with ❤️ in Lagos.</p>
+  </footer>
+
+</body>
+</html>
